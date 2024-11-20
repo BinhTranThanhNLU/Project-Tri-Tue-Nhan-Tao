@@ -1,6 +1,6 @@
 package model;
 
-public class Status {
+public class Status implements Cloneable {
 	
 	private int hp;
 	private int atk;
@@ -19,7 +19,15 @@ public class Status {
 		this.speed = speed;
 	}
 	
-	
+
+	@Override
+	public Status clone() {
+        try {
+            return (Status) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException("Cloning not supported for Status", e);
+        }
+    }
 
 	@Override
 	public String toString() {
